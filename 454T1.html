@@ -3,11 +3,11 @@
 <head>
 <script>
 function validateForm() {
-  var x = document.forms["myForm"]["fname"].value;
-  var y = document.forms["myForm"]["lname"].value;
-  var e = document.forms["myForm"]["email"].value;
-  var p1 = document.forms["myForm"]["pass"].value;
-  var p2 = document.forms["myForm"]["pass2"].value;
+  var x = document.forms["contactInfo"]["fname"].value;
+  var y = document.forms["contactInfo"]["lname"].value;
+  var e = document.forms["contactInfo"]["email"].value;
+  var p1 = document.forms["contactInfo"]["pass"].value;
+  var p2 = document.forms["contactInfo"]["pass2"].value;
   if (x == "" || y == "") {
     alert("Name must be filled out, correctly");
     return false;
@@ -27,24 +27,24 @@ function validateForm() {
 <body>
 <h2>Registration Form </h2>
 <br>
-<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+<form name="contactInfo" action="/action_page.php" onsubmit="return validateForm()" method="post">
   FirstName: <input type="text" name="fname">
 <br>
 
-<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+<form name="contactInfo" action="/action_page.php" onsubmit="return validateForm()" method="post">
   LastName: <input type="text" name="lname">
 <br>
 <br> 
  
-<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+<form name="contactInfo" action="/action_page.php" onsubmit="return validateForm()" method="post">
   Email: <input type="text" name="email">
 <br>
 <br>
 
 <div class="control-group">
-  <label for="dob-day" class="control-label">Date of Birth</label>
+  <label for="dobday" class="control-label">Date of Birth</label>
   <div class="controls">
-    <select name="dob-day" id="dob-day">
+    <select name="dobday" id="dobday">
       <option value="">Day</option>
       <option value="">---</option>
       <option value="01">01</option>
@@ -79,7 +79,7 @@ function validateForm() {
       <option value="30">30</option>
       <option value="31">31</option>
     </select>
-    <select name="dob-month" id="dob-month">
+    <select name="dobmonth" id="dobmonth">
       <option value="">Month</option>
       <option value="">-----</option>
       <option value="01">January</option>
@@ -95,7 +95,7 @@ function validateForm() {
       <option value="11">November</option>
       <option value="12">December</option>
     </select>
-    <select name="dob-year" id="dob-year">
+    <select name="dobyear" id="dobyear">
       <option value="">Year</option>
       <option value="">----</option>
       <option value="2012">2012</option>
@@ -193,14 +193,15 @@ function validateForm() {
 <br>
 
 <br>
-<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+<form name="contactInfo" action="/action_page.php" onsubmit="return validateForm()" method="post">
   Password: <input type="password" name="pass">
-<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+<form name="contactInfo" action="/action_page.php" onsubmit="return validateForm()" method="post">
   Confirm Password: <input type="password" name="pass2">
 <br>
 
   <input type="submit" value="Submit">
 </form>
-
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase.js"></script>
+</script> src = "app.js"></script> 
 </body>
 </html>
