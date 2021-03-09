@@ -1,8 +1,78 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
 <body>
     <h1>Updates from your family</h1>
-  <p>
-    A place to see what your family has been up to lately
-  </p>
+    <p>
+        A place to see what your family has been up to lately
+    </p>
+    <form action="https://ancestree454-default-rtdb.firebaseio.com/" method="post">
+        <label for="postTitle">Post Title:</label>
+        <input type="text" id="caption" name="caption"><br><br>
+        <label for="postText">Write Post Here:</label>
+        <input type="text" id="post" name="post"><br><br>
+        <label for="addPostPic">Upload Your Photo:</label>
+        <input type="file"
+               id="postPhoto" name="postPhoto"
+               accept="image/png, image/jpeg">
+        <input type="submit" value="Submit">
+    </form>
+
+
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+<script type="text/javascript">
+    (function () {
+        var firebaseConfig = {
+            apiKey: "AIzaSyA_-GXaiuJPnWOwrfIxuTtzrPJxh40Wi4c",
+            authDomain: "ancestree454.firebaseapp.com",
+            projectId: "ancestree454",
+            storageBucket: "ancestree454.appspot.com",
+            messagingSenderId: "996972698984",
+            appId: "1:996972698984:web:caafb3ddc770e314b14add",
+            measurementId: "G-YGH2EW22P2"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+
+        var push_to_firebase = function (data) {
+            alert("Post submitted")
+            var db = firebase.firestore();
+
+            db.collection("messages").add({
+                caption: data["caption"],
+                post: data["post"],
+                image: data["photo"],
+                timestamp: Date.now()
+            })
+                .then(function (docRef) {
+                    console.log("Message sent, ID: ", docRef.id);
+                    location.reload();
+                })
+                .catch(function (error) {
+                    console.error("Message could not be sent: ", error);
+                });
+        }
+
+        var contact_submit = function () {
+            var caption = document.getElementById("caption");
+            var postText = document.getElementById("post");
+            var photo = document.getElementById("postPhoto");
+
+            var data = {
+                "postTitle": caption.value,
+                "postText": postText.value,
+                "photo": photo.value
+            }
+            push_to_firebase(data);
+
+        }
+
+        document.getElementById("submit_msg").addEventListener("click", contact_submit);
+    })();
+</script>
+</html>
