@@ -1,3 +1,4 @@
+// code from : https://medium.com/@nitinpatel_20236/challenge-of-building-a-calendar-with-pure-javascript-a86f1303267d
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
