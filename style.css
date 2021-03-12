@@ -9,9 +9,8 @@ body {
   font-family: helvetica, arial, sans-serif;
   margin: 2em;
 }
-h2 {
-    line-height:5;
-    padding: 60px;
+h1 {
+    padding-top: 60px;
     text-align: center;
     color: black;
     font-size: 30px;
