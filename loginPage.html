@@ -27,7 +27,7 @@
   firebase.analytics();
 
   //login authentication	
-  firebase.auth().signInWithEmailAndPassword(email, password)
+  firebase.auth().signInWithEmailAndPassword(usrName, pssword)
   .then((userCredential) => {
     // Signed in
     var user = userCredential.user;

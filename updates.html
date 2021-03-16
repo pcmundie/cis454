@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        background-color: DodgerBlue;
+    }
+
+        .flex-container > div {
+            background-color: #f1f1f1;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+</style>
 <body>
     <h1>Updates from your family</h1>
     <p>
@@ -16,7 +32,12 @@
                accept="image/png, image/jpeg">
         <input type="submit" value="Submit">
     </form>
-
+    <div class="flex-container">
+        <div1>Post User Info </div1>
+        <div2>Post Title</div2>
+        <div2>Post Text</div2>
+        <div2>Post Image</div2>
+        <div3> <button type="button">Like</button></div3>
 
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
