@@ -5,9 +5,16 @@ let currentYear = today.getFullYear();
 let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 
+let eventDisplay = document.createElement("events");
+let eventHeader = document.createTextNode("Events for this day");
+let eventBody = document.createTextNode("");
+eventDisplay.appendChild(eventHeader);
+var br = document.createElement("br");
+eventDisplay.appendChild(br);
+eventDisplay.appendChild(eventBody);
+eventDisplay.appendChild(br);
 let events = document.getElementById("events");
-
-
+events.appendChild(eventDisplay);
 
 let months = [
   "Jan",
@@ -46,10 +53,7 @@ function jump() {
 }
 
 function displayEvent() {
-    var dbRefObject = firebase.databse.ref();
-    dbRefObject.on('value', snap => {
-        events.innerText = JSON.stringify(snap.val(), null, 3);
-    }
+  eventBody.appendChild(document.createTextNode("an event"));
 }
 
 function showCalendar(month, year) {
