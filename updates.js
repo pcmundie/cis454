@@ -8,7 +8,7 @@ var firebaseConfig = {
     measurementId: "G-YGH2EW22P2"
 };
 firebase.initializeApp(config);
-
+var database = firebase.database();
 let formMessage = firebase.database().ref('Updates');
 
 document.getElementById('newPost').addEventListener('submit', formSubmit);
