@@ -1,53 +1,42 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyA_-GXaiuJPnWOwrfIxuTtzrPJxh40Wi4c",
-    authDomain: "ancestree454.firebaseapp.com",
-    projectId: "ancestree454",
-    storageBucket: "ancestree454.appspot.com",
-    messagingSenderId: "996972698984",
-    appId: "1:996972698984:web:caafb3ddc770e314b14add",
-    measurementId: "G-YGH2EW22P2"
-};
-firebase.initializeApp(config);
-var database = firebase.database();
-let formMessage = firebase.database().ref('Updates');
 
-document.getElementById('newPost').addEventListener('submit', formSubmit);
+document.getElementById('newPost').addEventListener('submit', submitForm);
 
-//send message values
-sendToFirebase(postTitle, postText, addPostPic);
+function submitForm(e) {
+    e.preventDefault();
 
-function sendToFirebase(postTitle, postText, addPostPic) {
-    let newFormMessage = formMessage.push();
-    newFormMessage.set({
-        Title: postTitle,
-        Text: postText,
-        Image: addPostPic,
-
-    });
-
-    //Submit form
-    function formSubmit(e) {
-        e.preventDefault();
-        // Get Values from the DOM
-        let postTitle = document.querySelector('#postTitle').value;
-        let postText = document.querySelector('#postText').value;
-        let addPostPic = document.querySelector('#addPostPic').value;
-
-
-        document.getElementById('newPost').reset();
-    }
-    var query = firebase.database().ref("Updates").orderByKey();
-    query.once("value")
-        .then(function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                
-                var key = childSnapshot.key;
-                var childData = childSnapshot.val();
-                //trying to post it all in one container, but not sure if this is correct yet. Testing needed
-                document.getElementById("postContainer").appendChild(childData.Title + "\n" + childData.text + "\n" + childData.Image + "\n");
-                
-            });
-        });
-
-   
+    // Get values
+    var name = getInputVal('caption');
+    var email = getInputVal('post');
+    var photo = getInputVal('postPhoto');
+    saveMessage(name, email, photo);
+    document.getElementById('newPost').reset();
 }
+
+// Function to get get form values
+function getInputVal(id) {
+    return document.getElementById(id).value;
+}
+
+// Save message to firebase
+function saveMessage(title, text, photo) {
+    //var newMessageRef = formMessage.push();
+    var formMessage = firebase.database().ref('Updates');
+    formMessage.push({
+        Title: title,
+        Text: text,
+        Image: photo,
+    });
+}
+/*
+var query = firebase.database().ref("Updates").orderByKey();
+query.once("value")
+    .then(function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+
+            var key = childSnapshot.key;
+            var childData = childSnapshot.val();
+            //trying to post it all in one container, but not sure if this is correct yet. Testing needed
+            document.getElementById("postContainer").appendChild(childData.Title + "\n" + childData.text + "\n" + childData.Image + "\n");
+
+        });
+    }); */
