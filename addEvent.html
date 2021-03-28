@@ -1,0 +1,27 @@
+
+<html><h1>Add Event</h1>
+  <div class="form-group">
+    <form name="AddEventForm" action="./calendar.html" onsumbit = "submitEvent()">
+      <h4>Please Input Details of the Event you wish to Add</h4>
+      <label for="Title">Event Name</label>
+      <input type="text" id="title" name="title" value="" /><br />
+      <label for="Description">Description </label>
+      <input type="text" id="desc" name="psswdescord" value="" /><br />
+      <label for="Date">Date </label>
+      <input type="date" id="date" name="date" value="" /><br />
+      <label for="Time">Time </label>
+      <input type="time" id="time" name="time" value="" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      function submitEvent() {
+        var name = document.getElementById("title");
+        var date = document.getElementById("date");
+        var time = document.getElemenyById("time");
+        var desc = document.getElementById("desc");
+        var dbRefObject = firebase.databse.ref();
+        dbRefObject.child(date).set(name);
+}
+    </script>
+  </div>
+</html>
