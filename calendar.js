@@ -5,16 +5,10 @@ let currentYear = today.getFullYear();
 let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 
-let eventDisplay = document.createElement("events");
-let eventHeader = document.createTextNode("Events for this day");
-let eventBody = document.createTextNode("");
-eventDisplay.appendChild(eventHeader);
-var br = document.createElement("br");
-eventDisplay.appendChild(br);
-eventDisplay.appendChild(eventBody);
-eventDisplay.appendChild(br);
 let events = document.getElementById("events");
-events.appendChild(eventDisplay);
+let eventInfo = document.createTextNode("an event " + today);
+// set to today, changes on click
+events.appendChild(eventInfo);
 
 let months = [
   "Jan",
@@ -52,8 +46,10 @@ function jump() {
   showCalendar(currentMonth, currentYear);
 }
 
-function displayEvent() {
-  eventBody.appendChild(document.createTextNode("an event"));
+function handleDayClick(date) {
+  events.removeChild(events.firstChild);
+  eventInfo = document.createTextNode("event for " + date);
+  events.appendChild(eventInfo);
 }
 
 function showCalendar(month, year) {
@@ -89,11 +85,17 @@ function showCalendar(month, year) {
         let cell = document.createElement("td");
         let cellButton = document.createElement("BUTTON");
         cellButton.innerHTML = date;
+        // use the following for pulling from the database
+        let theDate = new Date(year, month, date);
         // cellButton.onClick = displayEvent;
-        cellButton.addEventListener("click", function(event) {
-          displayEvent();
-          // event.preventDefault();
-        });
+        // cellButton.addEventListener("click", handleDayClick);
+        cellButton.addEventListener(
+          "click",
+          function() {
+            handleDayClick(theDate);
+          },
+          cellButton.innerHTML
+        );
         if (
           date === today.getDate() &&
           year === today.getFullYear() &&
