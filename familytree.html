@@ -4,10 +4,19 @@
 <link rel="stylesheet" href="/style.css" />
 <body>
   <h1>Family Album</h1>
+  <nav>
+    <ul>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="familytree.html">Family Album</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+    </ul>
+  </nav>
   <p>
     A collection of your families photos, all in one place!
   </p>
-  
+
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 
@@ -32,20 +41,14 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
-  
-  <script src ="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <script type="text/javascript" src="familyTree.js"></script>
-  
-    <table>
-    <thead>
-    </thead>
+
+  <table>
+    <thead></thead>
     <tbody>
-      <tr id="gallery_div">
-    </tr>
+      <tr id="gallery_div"></tr>
     </tbody>
   </table>
-  <p>
-    *sanity check you are not crazy...*
-  </p>
-  
 </body>
