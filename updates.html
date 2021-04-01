@@ -6,25 +6,25 @@
 
 <body>
     <style>
-        .flex-container {
-            display: flex;
-            flex-direction: column;
+        .imageviewer {
             background-color: lightseagreen;
         }
-
-            .flex-container > div {
-                background-color: #f1f1f1;
-                width: 100px;
-                margin: 10px;
-                text-align: center;
-                line-height: 75px;
-                font-size: 30px;
-            }
+            
     </style>
     <h1>Updates from your family</h1>
+    <nav>
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="familytree.html">Family Album</a></li>
+            <li><a href="updates.html">Updates</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+        </ul>
+    </nav>
     <p>
         A place to see what your family has been up to lately
     </p>
+    <!-- upload post form -->
     <form action="" method="post" id="newPost">
         <label for="postTitle">Post Title:</label>
         <input type="text" id="caption" name="caption" /><br /><br />
@@ -37,17 +37,30 @@
                accept="image/png, image/jpeg" />
         <input type="submit" value="Submit" />
     </form>
+    
+    
+    <!--Displays posts in slideshow type format-->
+    <div class="slideshow-container">
 
-    <div class="flex-container" id="postContainer">
-        <div1> Post Title </div1>
-        <div2> Post Text</div2>
-        <div2> Post Photo</div2>
-        <div4> <button type="button">Like</button></div4>
+        <!-- Full-width images with number and caption text -->
+        <div class="imageviewer">
+            <div class="text" id="displayCaption"></div>
+            <div class="text" id="displayText"></div>
+        </div>
+        <!-- Like & Next button -->
+        <div>
+            <button type="button" id="like"> </button>
+            <button type="button" id="next">Click Here to View Posts!</button>
+        </div>
+
+
     </div>
-        <button type="button" id="enable">Enable Notifications</button>
+    <button type="button" id="enable">Enable Notifications</button>
+    <br>
 </body>
 
 </html>
+<!-- initialize firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
 <script src="/__/firebase/init.js"></script>
