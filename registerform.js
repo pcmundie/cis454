@@ -29,13 +29,13 @@ function getInputVal(id){
 function saveMessage(fname, lname, email, dobday, dobmonth, dobyear, pass){
   var formMessage = firebase.databse().ref('Register');
   formMessage.push({
-    lname: fname,
-    fname: lname,
-    email: email,
-    dobday: dobday,
-    dobmonth: dobmonth,
-    dobyear: dobyear,
-    pass: pass,
+    Firstname: fname,
+    Lastname: lname,
+    Email: email,
+    Day: dobday,
+    Month: dobmonth,
+    Year: dobyear,
+    Password: pass,
   })
 }
 
