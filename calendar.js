@@ -47,7 +47,7 @@ function jump() {
 }
 
 function handleDayClick(date) {
-  events.removeChild(events.firstChild);
+  // events.removeChild(events.firstChild);
   // eventInfo = document.createTextNode("event for " + date);
   var query = firebase
     .database()
