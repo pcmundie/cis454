@@ -49,6 +49,7 @@ function jump() {
 function handleDayClick(date) {
   // events.removeChild(events.firstChild);
   // eventInfo = document.createTextNode("event for " + date);
+  console.log(date);
   var query = firebase
     .database()
     .ref("Events")
@@ -64,6 +65,21 @@ function handleDayClick(date) {
     });
   });
 }
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ 
 
 function showCalendar(month, year) {
   let firstDay = new Date(year, month).getDay();
@@ -105,7 +121,7 @@ function showCalendar(month, year) {
         cellButton.addEventListener(
           "click",
           function() {
-            handleDayClick(theDate);
+            handleDayClick(formatDate(theDate));
           },
           cellButton.innerHTML
         );
