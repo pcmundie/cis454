@@ -47,3 +47,11 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+img {
+  width: 70%;
+}
+
+tr {
+  text-align: center;
+}
