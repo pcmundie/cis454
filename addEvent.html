@@ -37,6 +37,7 @@
 
       // Save message to firebase
       function saveMessage(title, desc, date, time) {
+        console.log(date);
         var formMessage = firebase.database().ref("Events");
         formMessage.push({
           Title: title,
