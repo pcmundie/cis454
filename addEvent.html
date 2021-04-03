@@ -1,28 +1,49 @@
-
-<html><h1>Add Event</h1>
-  <link rel="stylesheet" href="/style.css" />
+<html>
+  <h1>Add Event</h1>
   <div class="form-group">
-    <form name="AddEventForm" action="./calendar.html" onsumbit = "submitEvent()">
+    <form name="AddEventForm" action="./calendar.html" id = "event" onsumbit="submitEvent()">
       <h4>Please Input Details of the Event you wish to Add</h4>
       <label for="Title">Event Name</label>
       <input type="text" id="title" name="title" value="" /><br />
       <label for="Description">Description </label>
-      <input type="text" id="desc" name="psswdescord" value="" /><br />
+      <input type="text" id="desc" name="desc" value="" /><br />
       <label for="Date">Date </label>
       <input type="date" id="date" name="date" value="" /><br />
       <label for="Time">Time </label>
-      <input type="time" id="time" name="time" value="" /><br />
+      <input type="time" id="time" name="time" value="" /><br />
       <input type="submit" value="Submit" />
     </form>
     <script>
-      function submitEvent() {
-        var name = document.getElementById("title");
-        var date = document.getElementById("date");
-        var time = document.getElemenyById("time");
-        var desc = document.getElementById("desc");
-        var dbRefObject = firebase.databse.ref();
-        dbRefObject.child(date).set(name);
-}
+            function submitEvent(e) {
+          e.preventDefault();
+
+          // Get values
+          var title = getInputVal('title');
+          var desc = getInputVal('desc');
+          var date = getInputVal('date');
+          var time = getInputVal('time');
+          //gets inputs and sends to database
+          saveMessage(title, desc, date,time);
+          //clears form
+          document.getElementById('event').reset();
+      }
+
+      // Function to get get form values
+      function getInputVal(id) {
+          return document.getElementById(id).value;
+      }
+
+      // Save message to firebase
+      function saveMessage(title, desc, date,time) {
+          var formMessage = firebase.database().ref('Events');
+          formMessage.push({
+              Title: title,
+              Date: date,
+              Time: time,
+              Text: desc,
+          });
+      }
+      }
     </script>
   </div>
 </html>

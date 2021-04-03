@@ -48,8 +48,21 @@ function jump() {
 
 function handleDayClick(date) {
   events.removeChild(events.firstChild);
-  eventInfo = document.createTextNode("event for " + date);
-  events.appendChild(eventInfo);
+  // eventInfo = document.createTextNode("event for " + date);
+  var query = firebase
+    .database()
+    .ref("Events")
+    .orderByKey();
+  query.once("value").then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var key = childSnapshot.key;
+      var childData = childSnapshot.val();
+      if(childData.date == date){
+        eventInfo = document.createTextNode(childData.Title + childData.Time + childData.Text);
+        events.appendChild(eventInfo);
+      }
+    });
+  });
 }
 
 function showCalendar(month, year) {

@@ -1,65 +1,60 @@
-// Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyA_-GXaiuJPnWOwrfIxuTtzrPJxh40Wi4c",
-    authDomain: "ancestree454.firebaseapp.com",
-    projectId: "ancestree454",
-    storageBucket: "ancestree454.appspot.com",
-    messagingSenderId: "996972698984",
-    appId: "1:996972698984:web:caafb3ddc770e314b14add",
-    measurementId: "G-YGH2EW22P2"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(config);
-  
-  // Refernece contact infor collections
-let formmessage = firebase.database().ref('contactInfo');
 
+ document.getElementById('contactInfo').addEventListener('submit', submitForm);
 
 //listen for submit
-document.getElementById('.contactInfo').addEventListener('submit' , formSubmit);
 
-sendToFirebase(fname, lname, email, pass, dobday, dobmonth, dobyear);
+function submitForm(e) {
+    console.log("test 2");
+    var x = document.forms["contactInfo"]["fname"].value;
+    var y = document.forms["contactInfo"]["lname"].value;
+    var e = document.forms["contactInfo"]["email"].value;
+    var p1 = document.forms["contactInfo"]["pass"].value;
+    var p2 = document.forms["contactInfo"]["pass2"].value;
+    if (x == "" || y == "") {
+        alert("Name must be filled out, correctly");
+        return false;
+    }
+    if (e == "") {
+        alert("Email must be filled out");
+        return false;
+    }
+    if (p1 != p2) {
+        alert("Passwords do not match");
+        return false;
+    }
 
-function sendToFirebase(fname, lname, email, pass, dobday, dobmonth, dobyear) {
-  let newFormMessage = formMessage.push();
-  newFormMessage.set({
-      First: fname,
-      Last: lname,
-      Email: email,
-      Password: pass,
-      Day: dobday,
-      Month: dobmonth,
-      Year: dobyear,
+  //get values
+    console.log("test 3");
+  var fname= getInputVal('fname');
+  var lname= getInputVal('lname');
+    var email = getInputVal('email');
+    console.log("test 4");
+  var dobday= getInputVal('dobday');
+  var dobmonth= getInputVal('dobmonth');
+  var dobyear= getInputVal('dobyear');
+  var pass= getInputVal('pass'); 
+    saveMessage(fname, lname, email, dobday, dobmonth, dobyear, pass);
+    console.log("test 5");
+  document.getElementById('contactInfo').reset();
 
-  });
 
-  function formSubmit(e) {
-    e.preventDefault();
-    //get values
-    let fname = document.querySelector(".fname").value;
-    let lname = document.querySelector(".lname").value;
-    let email = document.querySelector(".email").value;
-    let pass = document.querySelector(".pass").value;
-    let dobday = document.querySelector(".dobday").value;
-    let dobmonth = document.querySelector(".dobmonth").value;
-    let dobyear = document.querySelector(".dobyear").value;
-
-    document.getElementById('newaccount').reset();
-
-    
-  }
-//Save infos to firebase
-var query = firebase.database().ref("contactInfo").orderByKey();
-    query.once("value")
-        .then(function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                
-                var key = childSnapshot.key;
-                var childData = childSnapshot.val();
-                //trying to post it all in one container, but not sure if this is correct yet. Testing needed
-                document.getElementById("postContainer").appendChild(childData.First + "\n" + childData.Last + "\n" + childData.Email + "\n"+ childData.Password + "\n"+ childData.Day + "\n"+ childData.Month + "\n"+ childData.Year + "\n");
-                
-            });
-        });
 }
+//get form values
+function getInputVal(id){
+  return document.getElementById(id).value;
+}
+
+//save info in database
+function saveMessage(fname, lname, email, dobday, dobmonth, dobyear, pass){
+  var formMessage = firebase.database().ref('Register');
+    formMessage.push({
+        Firstname: fname,
+        Lastname: lname,
+        Email: email,
+        Day: dobday,
+        Month: dobmonth,
+        Year: dobyear,
+        Password: pass,
+    });
+}
+
