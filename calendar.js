@@ -4,9 +4,12 @@ let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
+var captionArray = [];
+var textArray = [];
+var placeInArray = 0;
 
 let events = document.getElementById("events");
-let eventInfo = document.createTextNode("an event " + today);
+let eventInfo = document.createTextNode(captionArray+textArray);
 // set to today, changes on click
 events.appendChild(eventInfo);
 
@@ -59,8 +62,11 @@ function handleDayClick(date) {
       var key = childSnapshot.key;
       var childData = childSnapshot.val();
       if(childData.date == date){
-        eventInfo = document.createTextNode(childData.Title + childData.Time + childData.Text);
-        events.appendChild(eventInfo);
+        captionArray.push(childData.Title);
+            textArray.push(childData.Text+ childData.Time);
+        // eventInfo = document.createTextNode(childData.Title + childData.Time + childData.Text);
+        events.appendChild(captionArray);
+        events.appendChild(textArray);
       }
     });
   });
