@@ -9,48 +9,67 @@
   </p>
 
   <style>
-      .flex-container {
-          display: flex;
-          flex-direction: column;
-          background-color: rgb(255, 255, 255);
-      }
 
-          .flex-container > div {
-              background-color: #f1f1f1;
-              width: 100px;
-              margin: 10px;
-              text-align: center;
-              line-height: 75px;
-              font-size: 30px;
-          }
+      .imageviewer {
+            background-color: rgb(255, 255, 255);
+        }        
+      
   </style>
   <h1>Family Cookbook</h1>
+  <nav>
+    <ul>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="familytree.html">Family Album</a></li>
+        <li><a href="updates.html">Updates</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+    </ul>
+</nav>
   <p>
       A place to add all of your favorite family recipes!
   </p>
-  <form action="" method="post" id="newPost">
+     <!-- upload recipe form -->
+  <form action="" method="post" id="newRecipe">
       <label for="recipeName">Recipe Name:</label>
-      <input type="text" id="caption" name="caption" /><br /><br />
-      <label for="addPostPic">Upload a Photo of the Recipe:</label>
-      <input type="file"
-             id="postPhoto"
-             name="postPhoto"
-             accept="image/png, image/jpeg" />
+      <input type="text" id="title" name="title" /><br /><br />
+      <label for="recipeIngredients">Recipe Ingredients:</label>
+      <input type="text" id="ingredients" name="ingredients" /><br /><br />
+      <label for="recipeSteps">Recipe Steps:</label>
+      <input type="text" id="steps" name="steps" /><br /><br />
       <input type="submit" value="Submit" />
   </form>
 
-  <div class="flex-container" id="recipeContainer">
-      <div1> Recipe Title </div1>
-      <div2> Post Photo</div2>
-  </div>
+  
+  <!--Displays Recipes in slideshow type format-->
+  <div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="imageviewer">
+        <div class="text" id="displayTitle"></div>
+        <div class="text" id="displayIngredients"></div>
+        <div class="text" id="displaySteps"></div>
+    </div>
+    <!-- Next button -->
+    <div>
+        <button type="button" id="next">Click Here to View Posts!</button>
+    </div>
+
+
+</div>
+
 </body>
 
 </html>
+
+<!-- initialize firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
-<script src="updates.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script src="recipes.js"></script>
 <script src="script.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
  https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+<script src="/__/firebase/8.3.1/firebase-auth.js"></script>
+<script src="/__/firebase/8.3.1/firebase-firestore.js"></script>
