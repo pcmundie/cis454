@@ -41,6 +41,7 @@ var Notifications = {
 
 //Notifications.show("http://userserve-ak.last.fm/serve/64s/318711.jpg", "Here, we'll put the notification message");
 
+
 var Notifications = {
     apiAvailable: function() {
         if(window.webkitNotifications) {
