@@ -1,9 +1,3 @@
-/* If you're feeling fancy you can add interactivity
-    to your site with Javascript */
-
-// prints "hi" in the browser's dev tools console
-console.log("hi");
-
 if (window.webkitNotifications) {
   console.log('Your browser supports Notifications');
 } else {
@@ -19,7 +13,7 @@ var Notifications = {
 $(function() {
     $('#enable').click(function() {
         Notifications.requestPermission(function() {
-            alert('Permissão concedida');
+            alert('Permission Granted');
         })
     });
 });
@@ -45,7 +39,8 @@ var Notifications = {
     }
 };
 
-Notifications.show("http://userserve-ak.last.fm/serve/64s/318711.jpg", "Here, we'll put the notification message");
+//Notifications.show("http://userserve-ak.last.fm/serve/64s/318711.jpg", "Here, we'll put the notification message");
+
 
 var Notifications = {
     apiAvailable: function() {
