@@ -6,7 +6,7 @@ var ingredientArray = [];
 var stepsArray = [];
 
 // keeps track of where you are in the recipe backlog
-var indexArray = 0;
+var placeInArray = 0;
 
 //Display and cycle through posts when next is clicked
 next.addEventListener("click", function () {
@@ -14,7 +14,7 @@ next.addEventListener("click", function () {
     if (titleArray.length <= placeInArray) {
         placeInArray = 0;
     }
-    document.getElementById("click").innerHTML = "Next Recipe";
+    document.getElementById("next").innerHTML = "Next Recipe";
     document.getElementById("displayTitle").innerHTML = titleArray[placeInArray];
     document.getElementById("displayIngredients").innerHTML = ingredientArray[placeInArray];
     document.getElementById("displaySteps").innerHTML = stepsArray[placeInArray];
@@ -68,3 +68,5 @@ query.once("value")
 
         });
     }); 
+
+    
