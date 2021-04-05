@@ -58,7 +58,6 @@ query.once("value")
 
             var key = childSnapshot.key;
             var childData = childSnapshot.val();
-            //trying to post it all in one container, but not sure if this is correct yet. Testing needed
             captionArray.push(childData.Title);
             textArray.push(childData.Text);
             imgArray.push(childData.Image);
