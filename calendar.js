@@ -52,16 +52,14 @@ function jump() {
 function handleDayClick(date) {
   // events.removeChild(events.firstChild);
   // eventInfo = document.createTextNode("event for " + date);
-  console.log(date);
-  var query = firebase
-    .database()
-    .ref("Events")
-    .orderByKey();
+  var query = firebase.database().ref("Events").orderByKey();
   query.once("value").then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       var key = childSnapshot.key;
       var childData = childSnapshot.val();
+      console.log(date);
       if(childData.date == date){
+        console.log(childData.date)
         captionArray.push(childData.Title);
             textArray.push(childData.Text+ childData.Time);
         // eventInfo = document.createTextNode(childData.Title + childData.Time + childData.Text);
