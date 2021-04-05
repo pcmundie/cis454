@@ -1,4 +1,10 @@
-// code from https://medium.com/@nitinpatel_20236/challenge-of-building-a-calendar-with-pure-javascript-a86f1303267d
+// Some of this code is borrowed from
+// https://github.com/niinpatel/calendarHTML-Javascript
+// This source is used for the formatting of the calendar
+// as well as the Previous, Next, and Jump To dropdowns used in the Calendar Tab
+// The rest of the code found in here was added in to fit our feature requirements
+// The related calendar.html page is also in part from this source with addins for events
+
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
