@@ -6,13 +6,11 @@ function submitForm(e) {
         if (getInputVal('pssword') == "cis454") {
             alert("Login Succesful");
             window.location.href = "https://ancestree454.web.app/updates.html";
-            $("#loginForm").append("action=/updates.html");
         }
     }
     else {
         alert("Login Failed");
         window.location.href = "https://ancestree454.web.app/loginPage.html"
-        $("#loginForm").append("action=/login.html");
     }
 
 }
