@@ -37,7 +37,17 @@ function submitForm(e) {
     console.log("test 5");
   document.getElementById('contactInfo').reset();
 
-
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+        .then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            // ...
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ..
+        });
 }
 //get form values
 function getInputVal(id){
