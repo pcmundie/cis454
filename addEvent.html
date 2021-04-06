@@ -11,7 +11,7 @@
       <input type="date" id="date" name="date" value="" /><br />
       <label for="Time">Time </label>
       <input type="time" id="time" name="time" value="" /><br />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" onclick = "location.href='./calendar.html'"/>
     </form>
     <script>
       document.getElementById("event").addEventListener("submit", submitForm);
@@ -28,7 +28,6 @@
         saveMessage(title, desc, date, time);
         //clears form
         document.getElementById("event").reset();
-        window.location.href = "./calendar.html"
       }
 
       // Function to get get form values
